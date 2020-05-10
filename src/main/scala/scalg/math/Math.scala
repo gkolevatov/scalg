@@ -1,5 +1,8 @@
 package scalg.math
 
+/**
+ * Object contains methods for performing some mathematical operations which does not exist in scala.math object.
+ */
 object Math {
 
   /**
@@ -18,5 +21,34 @@ object Math {
       throw new IllegalArgumentException(x + " is not a perfect square number")
 
     tst
+  }
+
+  /**
+   * Calculate sum of optional values. If there is no values returns None
+   * @param values sequence of optional values
+   * @return sum of existing values. None if there is no such values.
+   */
+  def sum[T](values: Option[T]*)(implicit numeric: Numeric[T]): Option[T] = {
+    val nonEmptyList = values
+      .filter(_.nonEmpty)
+      .map(_.get)
+
+    if (nonEmptyList.isEmpty) {
+      None
+    } else {
+      Some(nonEmptyList.sum)
+    }
+  }
+
+  /**
+   * Calculate maximum of optional values. If there is no values returns None
+   * @param values sequence of optional values
+   * @return maximum of existing values. None if there is no such values.
+   */
+  def max[T](values: Option[T]*)(implicit numeric: Numeric[T]): Option[T] = {
+    values
+      .filter(_.nonEmpty)
+      .map(_.get)
+      .maxOption
   }
 }

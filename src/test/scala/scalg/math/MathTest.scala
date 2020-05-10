@@ -25,4 +25,27 @@ class MathTest extends AnyFunSuite {
     assertThrows[IllegalArgumentException]{Math.sqrt(101)}
     assertThrows[IllegalArgumentException]{Math.sqrt(Int.MaxValue)}
   }
+
+  test("Math.sum should return None for empty params, or if only None params given") {
+    assert(Math.sum[Int]().isEmpty)
+    assert(Math.sum[Int](None, None, None).isEmpty)
+  }
+
+  test("Math.sum should return sum of existing params") {
+    assert(Math.sum(None, Some(1)).get == 1)
+    assert(Math.sum(None, Some(1), Some(2), None, Some(1)).get == 4)
+    assert(Math.sum(Some(1), Some(2), Some(3)).get == 6)
+  }
+
+
+  test("Math.max should return None for empty params, or if only None params given") {
+    assert(Math.max[Int]().isEmpty)
+    assert(Math.max[Int](None, None, None).isEmpty)
+  }
+
+  test("Math.max should return maximum value of given non empty values") {
+    assert(Math.max(None, Some(1)).get == 1)
+    assert(Math.max(None, Some(1), Some(2), None, Some(1)).get == 2)
+    assert(Math.max(Some(1), Some(3), Some(2)).get == 3)
+  }
 }
