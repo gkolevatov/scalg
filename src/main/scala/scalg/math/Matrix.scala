@@ -145,6 +145,24 @@ class Matrix[T] private(val rowCount: Int, val colCount: Int, private val data: 
     })
   }
 
+  def *(element: T)(implicit tag: ClassTag[T], num: Numeric[T]): Matrix[T] = {
+    Matrix.fill(this.rowCount, this.colCount)((i, j) => {
+      num.times(this(i)(j),element)
+    })
+  }
+
+  def *(matrix: Matrix[T])(implicit tag: ClassTag[T], num: Numeric[T]): Matrix[T] = {
+    if (this.colCount != matrix.rowCount) {
+      throw new IllegalArgumentException("Matrix " + this.matrixSize + " cannot be multiplied with matrix " + this.matrixSize)
+    }
+
+    Matrix.fill(this.rowCount, matrix.colCount)((i, j) => {
+      (0 until this.colCount).foldLeft(num.one)((r, k) => {
+        num.plus(r, num.times(this(i)(k), matrix(k)(j)))
+      })
+    })
+  }
+
 
   def ==(matrix: Matrix[T]): Boolean = {
     Matrix.assertSameSize(this, matrix)

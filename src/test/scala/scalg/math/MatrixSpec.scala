@@ -125,7 +125,7 @@ class MatrixSpec extends AnyFunSuite {
     assert(b == (a + 5))
   }
 
-  test("Matrics can be substracted") {
+  test("Matrix can be subtracted") {
     val a: Matrix[Int] = Row(1, 2, 3) ::
       Row(4, 5, 6) ::
       Row(7, 8, 9)
@@ -137,7 +137,7 @@ class MatrixSpec extends AnyFunSuite {
     assert(b == (a - a))
   }
 
-  test("An element can be substracted from matrix") {
+  test("An element can be subtracted from matrix") {
     val a: Matrix[Int] = Row(1, 2, 3) ::
       Row(4, 5, 6) ::
       Row(7, 8, 9)
@@ -147,6 +147,33 @@ class MatrixSpec extends AnyFunSuite {
       Row(0, 0, 0)
 
     assert(b == (a - a))
+  }
+
+  test("Matrix can be multiplied by an element") {
+    val a = Row(1, 2, 3) ::
+      Row(4, 5, 6) ::
+      Row(7, 8, 9)
+
+    val b = Row(2, 4, 6) ::
+      Row(8, 10, 12) ::
+      Row(14, 16, 18)
+
+    assert(b == a * 2)
+  }
+
+  test("Matrix can be multiplied by an multiplied by a matrix if first matrix rowCount matches second matrix colCount") {
+    val a = Row(1, 2, 3) ::
+      Row(4, 5, 6)
+
+    val b = Row(1, 2) ::
+      Row(3, 4) ::
+      Row(5, 6)
+
+    val c = Row(22, 24) ::
+      Row(49, 64)
+
+    assert(c == a*b)
+
   }
 
 }
