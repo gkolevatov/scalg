@@ -157,7 +157,7 @@ class Matrix[T] private(val rowCount: Int, val colCount: Int, private val data: 
     }
 
     Matrix.fill(this.rowCount, matrix.colCount)((i, j) => {
-      (0 until this.colCount).foldLeft(num.one)((r, k) => {
+      (0 until this.colCount).foldLeft(num.zero)((r, k) => {
         num.plus(r, num.times(this(i)(k), matrix(k)(j)))
       })
     })

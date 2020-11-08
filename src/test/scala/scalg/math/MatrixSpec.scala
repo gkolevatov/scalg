@@ -161,7 +161,7 @@ class MatrixSpec extends AnyFunSuite {
     assert(b == a * 2)
   }
 
-  test("Matrix can be multiplied by an multiplied by a matrix if first matrix rowCount matches second matrix colCount") {
+  test("Matrix can be multiplied by a matrix if first matrix rowCount matches second matrix colCount") {
     val a = Row(1, 2, 3) ::
       Row(4, 5, 6)
 
@@ -169,11 +169,10 @@ class MatrixSpec extends AnyFunSuite {
       Row(3, 4) ::
       Row(5, 6)
 
-    val c = Row(22, 24) ::
+    val c = Row(22, 28) ::
       Row(49, 64)
 
     assert(c == a*b)
-
   }
 
 }
