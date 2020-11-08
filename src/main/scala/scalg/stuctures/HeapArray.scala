@@ -3,8 +3,9 @@ package scalg.stuctures
 import java.util.NoSuchElementException
 
 import Heapable.makeArrayHeapable
-
+import Heapable.makeHeapableArray
 import scala.reflect.ClassTag
+
 /**
  *  Implementation of the heap data structure.
  *  Basically it's array-based binary tree, any node of which satisfies max-heap property:
@@ -12,12 +13,16 @@ import scala.reflect.ClassTag
  *
  *  It support operation of popping max element and creating from array
  */
-class FixedSizeHeap[T](heapSize: Int)(implicit ordering: Ordering[T], classTag: ClassTag[T]) extends Heap[T] {
+class HeapArray[T](heapSize: Int)(implicit ordering: Ordering[T], classTag: ClassTag[T]) extends Heap[T] {
 
-  private val heap: Heapable[T] = makeArrayHeapable(new Array[T](heapSize))
+  private var heap: Heapable[T] = makeArrayHeapable(new Array[T](heapSize))
   heap.heapSize = 0
 
   override def insert(element: T): Unit = {
+    if (heap.heapSize == heap.length) {
+      assignAsNewHeap(new Array[T](2*heap.length))
+    }
+
     heap.heapSize += 1
     update(heap.heapSize - 1, element)
   }
@@ -36,10 +41,19 @@ class FixedSizeHeap[T](heapSize: Int)(implicit ordering: Ordering[T], classTag: 
       heap.heapSize -= 1
       heap.heapify(0)
 
+      if (heap.heapSize < heap.length/2 && heap.heapSize > heapSize) {
+        assignAsNewHeap(new Array[T](heap.length / 2))
+      }
+
       el
     }
   }
 
+  private def assignAsNewHeap(newHeap: Heapable[T]) = {
+    Array.copy(makeHeapableArray(heap), 0, makeHeapableArray(newHeap), 0, heap.heapSize)
+    newHeap.heapSize = heap.heapSize
+    heap = newHeap
+  }
 
   private def update(index: Int, value: T): Unit = {
     heap(index) = value
@@ -55,10 +69,10 @@ class FixedSizeHeap[T](heapSize: Int)(implicit ordering: Ordering[T], classTag: 
 }
 
 
-object FixedSizeHeap {
+object HeapArray {
 
-  def apply[T](elements: T*)(implicit ordering: Ordering[T], classTag: ClassTag[T]): Heap[T] = {
-    val heap =  new FixedSizeHeap[T](elements.length)
+  def apply[T](elements: T*)(implicit ordering: Ordering[T], classTag: ClassTag[T]): HeapArray[T] = {
+    val heap =  new HeapArray[T](elements.length)
     for(el <- elements)  heap.insert(el)
     heap
   }

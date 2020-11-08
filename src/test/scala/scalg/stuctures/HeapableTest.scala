@@ -111,7 +111,7 @@ class HeapableTest extends AnyFunSuite {
     assert(a sameElements Array(8, 3, 7, 1, 2, 5, 6))
   }
 
-  test("heapify should push specified element down to the tree of greater children, if heap propery wasn't satisfied on firt step") {
+  test("heapify should push specified element down to the tree of greater children, if heap property wasn't satisfied on first step") {
     val a = Array(4, 3, 7, 1, 2, 5, 6)
 
     a.heapify(0)
