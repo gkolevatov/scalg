@@ -15,6 +15,8 @@ import scala.reflect.ClassTag
  */
 class HeapArray[T](heapSize: Int)(implicit ordering: Ordering[T], classTag: ClassTag[T]) extends Heap[T] {
 
+  def this()(implicit ordering: Ordering[T], classTag: ClassTag[T]) = this(10)
+
   private var heap: Heapable[T] = makeArrayHeapable(new Array[T](heapSize))
   heap.heapSize = 0
 
