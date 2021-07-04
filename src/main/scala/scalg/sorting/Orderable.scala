@@ -9,10 +9,10 @@ import scala.util.Random
 
 class OrderableArray[T](a: Array[T])(implicit ordering: Ordering[T], classTag: ClassTag[T]) {
   private lazy val rnd = new Random()
-  val data = a.clone()
 
   def heapSort: Array[T] = {
-    val heap = makeHeap(a.clone())
+    val underlying = a.clone()
+    val heap = makeHeap(underlying)
 
     while(heap.heapSize > 1) {
       heap.swap(0, heap.heapSize - 1)
@@ -20,7 +20,7 @@ class OrderableArray[T](a: Array[T])(implicit ordering: Ordering[T], classTag: C
       heap.heapify(0)
     }
 
-    a
+    underlying
   }
 
   /**

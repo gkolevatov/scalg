@@ -21,7 +21,8 @@ class sortingTest extends AnyFunSuite {
 
   test("heapSort() should resort backward sorted array") {
     val a = Array(7, 6, 5, 4, 3, 2, 1)
-    assert(a.heapSort sameElements Array(1, 2, 3, 4, 5, 6, 7))
+    val sorted = a.heapSort
+    assert(sorted sameElements Array(1, 2, 3, 4, 5, 6, 7))
   }
 
   test("heapSort() should random array") {
