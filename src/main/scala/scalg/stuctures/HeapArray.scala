@@ -51,7 +51,7 @@ class HeapArray[T](heapSize: Int)(implicit ordering: Ordering[T], classTag: Clas
     }
   }
 
-  private def assignAsNewHeap(newHeap: Heapable[T]) = {
+  private def assignAsNewHeap(newHeap: Heapable[T]): Unit = {
     Array.copy(makeHeapableArray(heap), 0, makeHeapableArray(newHeap), 0, heap.heapSize)
     newHeap.heapSize = heap.heapSize
     heap = newHeap

@@ -3,6 +3,7 @@ package scalg.sorting
 import scalg.stuctures.Heapable.makeHeap
 import scalg.stuctures.RichArray.makeArrayRich
 
+import scala.annotation.tailrec
 import scala.reflect.ClassTag
 import scala.util.Random
 
@@ -30,7 +31,7 @@ class OrderableArray[T](a: Array[T])(implicit ordering: Ordering[T], classTag: C
    */
   def orderedStat(i: Int): T = {
     if (i < 1 || i > a.length) {
-      throw new IllegalArgumentException(s"${i}-th Ordered statistic does not exists for array with length ${a.length}")
+      throw new IllegalArgumentException(s"$i-th Ordered statistic does not exists for array with length ${a.length}")
     }
     orderedStat(0, a.length, i)
   }
@@ -41,6 +42,7 @@ class OrderableArray[T](a: Array[T])(implicit ordering: Ordering[T], classTag: C
    */
   def median(): T = orderedStat((a.length + 1)/2)
 
+  @tailrec
   private def orderedStat(s: Int, e: Int, i: Int): T = {
     if (e - s == 1) {
       a(s)
