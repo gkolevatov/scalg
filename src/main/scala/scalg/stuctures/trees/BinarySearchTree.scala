@@ -1,4 +1,4 @@
-package scalg.stuctures
+package scalg.stuctures.trees
 
 import scala.collection.mutable
 
@@ -9,27 +9,27 @@ import scala.collection.mutable
  *
  * It has two interfaces, first is public and is similar to java SortedSet. It contains the next methods
  * <ul>
- * <li>[[scalg.stuctures.BinarySearchTree#contains]] -- True if tree contains an element  </li>
- * <li>[[scalg.stuctures.BinarySearchTree#min]] -- Returns the smallest element of the tree </li>
- * <li>[[scalg.stuctures.BinarySearchTree#max]] -- Returns the biggest element of the tree </li>
- * <li>[[scalg.stuctures.BinarySearchTree#predecessor]] -- Returns the biggest element that is smaller then given element </li>
- * <li>[[scalg.stuctures.BinarySearchTree#successor]] -- Returns the smallest element that is bigger then given element </li>
- * <li>[[scalg.stuctures.BinarySearchTree#+=]] -- alias for add </li>
- * <li>[[scalg.stuctures.BinarySearchTree#add]] -- adds element to the tree </li>
- * <li>[[scalg.stuctures.BinarySearchTree#-=]] -- alias for remove </li>
- * <li>[[scalg.stuctures.BinarySearchTree#remove]] -- removes element from the tree </li>
+ * <li>[[BinarySearchTree#contains]] -- True if tree contains an element  </li>
+ * <li>[[BinarySearchTree#min]] -- Returns the smallest element of the tree </li>
+ * <li>[[BinarySearchTree#max]] -- Returns the biggest element of the tree </li>
+ * <li>[[BinarySearchTree#predecessor]] -- Returns the biggest element that is smaller then given element </li>
+ * <li>[[BinarySearchTree#successor]] -- Returns the smallest element that is bigger then given element </li>
+ * <li>[[BinarySearchTree#+=]] -- alias for add </li>
+ * <li>[[BinarySearchTree#add]] -- adds element to the tree </li>
+ * <li>[[BinarySearchTree#-=]] -- alias for remove </li>
+ * <li>[[BinarySearchTree#remove]] -- removes element from the tree </li>
  * </ul>
  *
  * Second is package-private methods which gives access to tree nodes, and therefore allows to implement more complex
  * algorithms
  * <ul>
- * <li>[[scalg.stuctures.BinarySearchTree#search]] -- Returns the node with the smallest value</li>
- * <li>[[scalg.stuctures.BinarySearchTree#minNode]] -- Returns the node with the smallest value</li>
- * <li>[[scalg.stuctures.BinarySearchTree#maxNode]] -- Returns the node with the biggest value</li>
- * <li>[[scalg.stuctures.BinarySearchTree#predecessor]] -- Returns the node which value is the biggest that is smaller then the value of the given node</li>
- * <li>[[scalg.stuctures.BinarySearchTree#successor]] -- Returns the node which value is the smallest that is bigger then the value of the given node</li>
- * <li>[[scalg.stuctures.BinarySearchTree#insert]] -- Inserts given value into the tree and returns created node </li>
- * <li>[[scalg.stuctures.BinarySearchTree#removeNode]] -- Removes given node from the tree and return it </li>
+ * <li>[[BinarySearchTree#search]] -- Returns the node with the smallest value</li>
+ * <li>[[BinarySearchTree#minNode]] -- Returns the node with the smallest value</li>
+ * <li>[[BinarySearchTree#maxNode]] -- Returns the node with the biggest value</li>
+ * <li>[[BinarySearchTree#predecessor]] -- Returns the node which value is the biggest that is smaller then the value of the given node</li>
+ * <li>[[BinarySearchTree#successor]] -- Returns the node which value is the smallest that is bigger then the value of the given node</li>
+ * <li>[[BinarySearchTree#insert]] -- Inserts given value into the tree and returns created node </li>
+ * <li>[[BinarySearchTree#removeNode]] -- Removes given node from the tree and return it </li>
  * </ul>
  *
  */

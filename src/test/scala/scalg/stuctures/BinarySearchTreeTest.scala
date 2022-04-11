@@ -3,6 +3,7 @@ package scalg.stuctures
 import org.junit.runner.RunWith
 import org.scalatest.funsuite.AnyFunSuite
 import org.scalatestplus.junit.JUnitRunner
+import scalg.stuctures.trees.BinarySearchTree
 
 @RunWith(classOf[JUnitRunner])
 class BinarySearchTreeTest extends AnyFunSuite {
